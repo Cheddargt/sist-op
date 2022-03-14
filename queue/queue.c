@@ -2,7 +2,6 @@
 #include "queue.h"
 
 
-
 //------------------------------------------------------------------------------
 // Conta o numero de elementos na fila
 // Retorno: numero de elementos na fila
@@ -125,15 +124,15 @@ int queue_remove (queue_t **queue, queue_t *elem) {
         return (-1);
     }
     
-    queue_t *queue_check = queue;
+    queue_t **queue_check = queue;
 
-    while (queue_check != elem) {
-        if (queue_check->next == queue) {
+    while ((*queue_check) != elem) {
+        if ((*queue_check)->next == *queue) {
             printf("Erro: elemento nao pertence a lista");
             return (-1);
         }
 
-        queue_check=queue_check->next;
+        *queue_check=(*queue_check)->next;
     }
 
     queue_t *aux_prev = (elem)->prev;
