@@ -43,7 +43,7 @@ void queue_print (char *name, queue_t *queue, void print_elem (void*)) {
     }
 
     printf("]");
-} 
+}
 
 //------------------------------------------------------------------------------
 // Insere um elemento no final da fila.
@@ -59,19 +59,17 @@ int queue_append (queue_t **queue, queue_t *elem) {
      seja C um novo elemento (*elem)
     **/
 
-    queue_t *aux = (*queue)->prev;
-
     // verificar se a fila existe
         // return -1
-    
+
     // verificar se o elemento existe
     if (elem == NULL) {
         printf ("Erro: o elemento não existe");
         return (-1);
     }
-    
-    // verificar se o elemento pertence a outra fila 
-    if ((elem)->prev != NULL || (elem)->next != NULL) { 
+
+    // verificar se o elemento pertence a outra fila
+    if ((elem)->prev != NULL || (elem)->next != NULL) {
         printf ("Erro: o elemento pertence a outra fila");
         return (-1);
     }
@@ -82,6 +80,9 @@ int queue_append (queue_t **queue, queue_t *elem) {
         (elem)->prev = (elem);
         return (0);
     }
+
+    // TODO: resolver problema
+    queue_t *aux = (*queue)->prev;
 
     // A->prev = C
     (*queue)->prev = elem;
@@ -111,19 +112,19 @@ int queue_remove (queue_t **queue, queue_t *elem) {
 
     // verificar se a fila existe
         // return -1
-    
+
     // verificar se o elemento existe
     if (elem == NULL) {
         printf ("Erro: o elemento não existe");
         return (-1);
     }
-    
-    // verificar se o elemento pertence a outra fila 
+
+    // verificar se o elemento pertence a outra fila
     if ((elem)->prev == NULL && (elem)->next == NULL) {
         printf ("Erro: o elemento não pertence a uma fila");
         return (-1);
     }
-    
+
     queue_t **queue_check = queue;
 
     while ((*queue_check) != elem) {
