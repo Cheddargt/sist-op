@@ -75,7 +75,7 @@ int queue_append (queue_t **queue, queue_t *elem) {
     }
 
     // verificar se queue é vazio
-    if (queue == NULL) {
+    if ((*queue) == NULL) {
         (elem)->next = (elem);
         (elem)->prev = (elem);
         return (0);

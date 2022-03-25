@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1647306510 source:/home/gustavo/source/sist-op/queue/queue.c
+1647307157 source:/home/gustavo/source/sist-op/queue/queue.c
 	<stdio.h>
 	"queue.h"
 
