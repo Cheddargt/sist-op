@@ -7,12 +7,16 @@
 // Retorno: numero de elementos na fila
 int queue_size (queue_t *queue) {
 
-    if (queue == NULL) { return (0); }
+    if (queue == NULL) { 
+        printf("queue null!\n");
+        return (0); }
 
-    queue_t *aux = queue->next;
+    queue_t *aux = queue;
     int i = 1;
 
-    while (aux->next != queue){ i++; }
+    while (aux->next != queue){ 
+        aux = aux->next;
+        i++; }
 
     return (i);
 }
@@ -60,7 +64,10 @@ int queue_append (queue_t **queue, queue_t *elem) {
     **/
 
     // verificar se a fila existe
-        // return -1
+    if (queue == NULL) {
+        printf("Erro: a fila não existe");
+        return -1;
+    }
 
     // verificar se o elemento existe
     if (elem == NULL) {
@@ -76,22 +83,22 @@ int queue_append (queue_t **queue, queue_t *elem) {
 
     // verificar se queue é vazio
     if ((*queue) == NULL) {
+        (*queue) = elem;
         (elem)->next = (elem);
         (elem)->prev = (elem);
         return (0);
     }
-
-    // TODO: resolver problema
-    queue_t *aux = (*queue)->prev;
-
-    // A->prev = C
-    (*queue)->prev = elem;
-    // B->next = C
-    aux->next = elem;
-    // C->prev = B
-    elem->prev = aux;
+    else {
     // C->next = A
     elem->next = (*queue);
+    // C->prev = B
+    elem->prev = (*queue)->prev;
+    // A->prev = C
+    (*queue)->prev->next = elem;
+    // B->next = C
+    (*queue)->prev = elem;
+    }
+
     return (0);
 }
 
@@ -107,11 +114,15 @@ int queue_remove (queue_t **queue, queue_t *elem) {
 
     // verificar se a queue é vazia
     if (queue == NULL) {
+        printf ("Erro: a fila não existe");
         return (-1);
     }
 
     // verificar se a fila existe
-        // return -1
+    if ((*queue) == NULL) {
+        printf ("Erro: a fila está vazia");
+        return (-1);
+    }
 
     // verificar se o elemento existe
     if (elem == NULL) {
@@ -119,7 +130,7 @@ int queue_remove (queue_t **queue, queue_t *elem) {
         return (-1);
     }
 
-    // verificar se o elemento pertence a outra fila
+    // verificar se o elemento pertence a uma fila
     if ((elem)->prev == NULL && (elem)->next == NULL) {
         printf ("Erro: o elemento não pertence a uma fila");
         return (-1);
@@ -127,16 +138,18 @@ int queue_remove (queue_t **queue, queue_t *elem) {
 
     queue_t **queue_check = queue;
 
-    while ((*queue_check) != elem) {
-        if ((*queue_check)->next == *queue) {
+    // verificar se o elemento pertence a outra fila
+    while ((*queue_check) != elem && (*queue_check)) {
+        
+        *queue_check=(*queue_check)->next;
+    }
+
+    if ((*queue_check)->next == *queue) {
             printf("Erro: elemento nao pertence a lista");
             return (-1);
         }
 
-        *queue_check=(*queue_check)->next;
-    }
-
-    queue_t *aux_prev = (elem)->prev;
+    queue_t *aux = (elem)->prev;
     queue_t *aux_next = (elem)->next;
 
     // C->prev aponta pro A
