@@ -11,3 +11,15 @@
 	<assert.h>
 	"queue.h"
 
+1648322296 source:d:\utfpr\2022-1\sistemas operacionais\sist-op\queue\queue.c
+	<stdio.h>
+	"queue.h"
+
+1648321780 d:\utfpr\2022-1\sistemas operacionais\sist-op\queue\queue.h
+
+1648321780 source:d:\utfpr\2022-1\sistemas operacionais\sist-op\queue\testafila.c
+	<stdio.h>
+	<stdlib.h>
+	<assert.h>
+	"queue.h"
+
