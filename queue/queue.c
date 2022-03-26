@@ -164,6 +164,9 @@ int queue_remove(queue_t **queue, queue_t *elem)
     // uma cópia da cabeça da fila
     queue_t *queue_check = (*queue);
 
+    // uma cópia do ponteiro do elemento a ser removido
+    queue_t *aux = elem;
+
 
     // verificar se o elemento pertence a outra fila
     /*
@@ -174,7 +177,7 @@ int queue_remove(queue_t **queue, queue_t *elem)
      elemento da fila)
     */
     while (queue_check != elem && queue_check->next != (*queue)) {
-        *queue_check=(*queue_check)->next;
+        queue_check = queue_check->next;
     }
 
     // se for diferente de elem então deu uma volta inteira e
@@ -186,28 +189,25 @@ int queue_remove(queue_t **queue, queue_t *elem)
 
     // se é ele mesmo, remove ele mesmo da fila e deixa
     // ela vazia
-    if (queue_check == quue_check->next) {
-        (*queue) == NULL;
+    if (queue_check == queue_check->next) {
+        //(*queue) == NULL;
     }
     // se não é ele mesmo, cria-se um auxiliar para a remoção
     else {
-        // uma cópia do elemento a ser removido
-        queue_t *aux = (*queue);
+
+        // A->next aponta pro C
+        aux->prev->next = elem->next;
+
+        // C->prev aponta pro A
+        aux->next->prev = elem->prev;
+
+        if (aux==(*queue)) {
+            (*queue) = aux->next;
+        }
     }
 
+    aux->next = NULL;
+    aux->prev = NULL;
 
-
-
-    /*
-
-    queue_t *aux = (elem)->prev;
-    queue_t *aux_next = (elem)->next;
-
-    // C->prev aponta pro A
-    aux_next->prev = aux_prev;
-    // A->next aponta pro C
-    aux_prev->next = aux_next;
-
-    */
     return (0);
 }
