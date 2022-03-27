@@ -1,3 +1,7 @@
+/* ALUNOS */
+/* GUSTAVO HENRIQUE ZENI - RA: 1985370 */
+/* IANCA POLIZELO - RA: 1985388 */
+
 #include <stdio.h>
 #include "queue.h"
 
@@ -59,7 +63,7 @@ void queue_print(char *name, queue_t *queue, void print_elem(void *))
     }
 
     printf("]");
-    
+
     printf("\n");
 
 }
