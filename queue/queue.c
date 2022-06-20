@@ -1,3 +1,7 @@
+/* ALUNOS */
+/* GUSTAVO HENRIQUE ZENI - RA: 1985370 */
+/* IANCA POLIZELO - RA: 1985388 */
+
 #include <stdio.h>
 #include "queue.h"
 
@@ -34,26 +38,34 @@ int queue_size(queue_t *queue)
 
 void queue_print(char *name, queue_t *queue, void print_elem(void *))
 {
-    queue_t *aux = queue->next;
-
-    for (int i = 0; i < sizeof(name); i++)
-    {
-        printf("%c", name[i]);
+    
+    if (queue == NULL) {
+        return;
     }
+
+    queue_t *aux = queue;
 
     printf("[");
 
-    print_elem(queue);
-
+    print_elem(aux);
+    aux = aux->next;
     printf(" ");
 
-    while (aux != queue)
-    {
+
+    while (aux != queue) {
         print_elem(aux);
-        printf(" ");
+
+        if (aux->next != queue)
+            printf(" ");
+        
+        aux = aux->next;
+        
     }
 
     printf("]");
+
+    printf("\n");
+
 }
 
 //------------------------------------------------------------------------------
@@ -163,10 +175,8 @@ int queue_remove(queue_t **queue, queue_t *elem)
 
     // uma cópia da cabeça da fila
     queue_t *queue_check = (*queue);
-
     // uma cópia do ponteiro do elemento a ser removido
     queue_t *aux = elem;
-
 
     // verificar se o elemento pertence a outra fila
     /*
@@ -190,11 +200,10 @@ int queue_remove(queue_t **queue, queue_t *elem)
     // se é ele mesmo, remove ele mesmo da fila e deixa
     // ela vazia
     if (queue_check == queue_check->next) {
-        //(*queue) == NULL;
+        (*queue) = NULL;
     }
     // se não é ele mesmo, cria-se um auxiliar para a remoção
     else {
-
         // A->next aponta pro C
         aux->prev->next = elem->next;
 
@@ -208,6 +217,6 @@ int queue_remove(queue_t **queue, queue_t *elem)
 
     aux->next = NULL;
     aux->prev = NULL;
-
+    
     return (0);
 }

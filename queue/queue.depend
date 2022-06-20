@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1647307157 source:/home/gustavo/source/sist-op/queue/queue.c
+1648392521 source:/home/gustavo/source/sist-op/queue/queue.c
 	<stdio.h>
 	"queue.h"
 
 1647305374 /home/gustavo/source/sist-op/queue/queue.h
 
-1647305374 source:/home/gustavo/source/sist-op/queue/testafila.c
+1648240273 source:/home/gustavo/source/sist-op/queue/testafila.c
 	<stdio.h>
 	<stdlib.h>
 	<assert.h>
