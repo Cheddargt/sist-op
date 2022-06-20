@@ -1,9 +1,10 @@
+#include <stdio.h>
+#include "queue.h"
+
 //Alunos
 //Gustavo Henrique Zeni
 //Ianca Polizelo
 
-#include <stdio.h>
-#include "queue.h"
 
 //------------------------------------------------------------------------------
 // Insere um elemento no final da fila.
