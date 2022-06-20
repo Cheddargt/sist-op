@@ -2,7 +2,7 @@
 //Gustavo Henrique Zeni
 //Ianca Polizelo
 
-include "pingpong.h"
+#include "ppos.h"
 #include "queue.h"
 
 #include <signal.h>

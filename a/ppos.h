@@ -5,7 +5,7 @@
 
 #define _XOPEN_SOURCE 600	// para evitar erros POSIX no MacOS X
 
-#include "datatypes.h"		// estruturas de dados necessárias
+#include "ppos_data.h"		// estruturas de dados necessárias
 #include <stdio.h>
 #include <stdlib.h>
 

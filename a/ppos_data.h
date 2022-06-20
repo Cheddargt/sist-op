@@ -1,7 +1,7 @@
 // Estruturas de dados internas do sistema operacional
 
-#ifndef __DATATYPES__
-#define __DATATYPES__
+#ifndef __PPOS_DATA__
+#define __PPOS_DATA__
 
 #include <stdio.h>
 #include <stdlib.h>
